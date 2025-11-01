@@ -1,0 +1,46 @@
+[
+  {
+    "SQLServerDBConnectionString": "REDACTED",
+    "controlPanelLink": "https://portal.azure.com",
+    "databases": null,
+    "destinationAppUrl": "https://bnoonwebsite-heh4hmbkc2gzgudn.canadacentral-01.azurewebsites.net",
+    "hostingProviderForumLink": "",
+    "msdeploySite": "bnoonwebsite",
+    "mySQLDBConnectionString": "",
+    "profileName": "bnoonwebsite - Web Deploy",
+    "publishMethod": "MSDeploy",
+    "publishUrl": "bnoonwebsite-heh4hmbkc2gzgudn.scm.canadacentral-01.azurewebsites.net:443",
+    "userName": "REDACTED",
+    "userPWD": "REDACTED",
+    "webSystem": "WebSites"
+  },
+  {
+    "SQLServerDBConnectionString": "REDACTED",
+    "controlPanelLink": "https://portal.azure.com",
+    "databases": null,
+    "destinationAppUrl": "https://bnoonwebsite-heh4hmbkc2gzgudn.canadacentral-01.azurewebsites.net",
+    "ftpPassiveMode": "True",
+    "hostingProviderForumLink": "",
+    "mySQLDBConnectionString": "",
+    "profileName": "bnoonwebsite - FTP",
+    "publishMethod": "FTP",
+    "publishUrl": "ftps://waws-prod-yt1-027.ftp.azurewebsites.windows.net/site/wwwroot",
+    "userName": "REDACTED",
+    "userPWD": "REDACTED",
+    "webSystem": "WebSites"
+  },
+  {
+    "SQLServerDBConnectionString": "REDACTED",
+    "controlPanelLink": "https://portal.azure.com",
+    "databases": null,
+    "destinationAppUrl": "https://bnoonwebsite-heh4hmbkc2gzgudn.canadacentral-01.azurewebsites.net",
+    "hostingProviderForumLink": "",
+    "mySQLDBConnectionString": "",
+    "profileName": "bnoonwebsite - Zip Deploy",
+    "publishMethod": "ZipDeploy",
+    "publishUrl": "bnoonwebsite-heh4hmbkc2gzgudn.scm.canadacentral-01.azurewebsites.net:443",
+    "userName": "REDACTED",
+    "userPWD": "REDACTED",
+    "webSystem": "WebSites"
+  }
+]
