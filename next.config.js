@@ -3,17 +3,14 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  output: "export", // ✅ keep your static export setting
-
-  webpack: (config, { isServer }) => {
-    if (isServer) {
-      // 🚫 Prevent pdfjs-dist from trying to import "canvas" in Node
-      config.externals.push({
-        canvas: "commonjs canvas",
-      });
-    }
-    return config;
-  },
+  // output: "export", // ❌ comment or remove this
+  turbopack: {}, // ✅ enable turbopack mode
+  // webpack: (config, { isServer }) => {
+  //   if (isServer) {
+  //     config.externals.push({ canvas: "commonjs canvas" });
+  //   }
+  //   return config;
+  // },
 };
 
 module.exports = nextConfig;
