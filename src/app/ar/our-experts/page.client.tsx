@@ -1,22 +1,23 @@
 "use client";
-import Image from "next/image";
-
+import React, { Suspense } from "react";
 import Navbar from "@/features/Layout/Navbar";
 import PageBanner from "@/features/Layout/PageBanner";
 import FertilityDoctor from "@/features/Common/FertilityDoctor";
-import OurExperts from "@/features/Common/OurExperts";
+
+// ✅ Lazy-load OurExperts
+const OurExperts = React.lazy(() => import("@/features/Common/OurExperts"));
 
 export default function ClientOurExpertsPage() {
   return (
     <>
       <Navbar />
-
-      <PageBanner
-        bgImage="/images/experts-banner-ar.jpg"
-      />
-
-      <OurExperts />
+      <PageBanner bgImage="/images/experts-banner-ar.jpg" />
       
+      {/* ✅ Wrap in Suspense boundary */}
+      <Suspense fallback={<div>Loading experts...</div>}>
+        <OurExperts />
+      </Suspense>
+
       <FertilityDoctor />
     </>
   );

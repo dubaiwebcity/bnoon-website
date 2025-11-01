@@ -1,12 +1,9 @@
 "use client";
-
-import React, { useState } from "react";
+import React, { useState, useEffect, Suspense } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import { useEffect } from "react";
-
 // ✅ Doctor data structure
-interface OurExperts {
+interface Expert {
   id: number;
   name: string;
   qualification: string;
@@ -15,7 +12,7 @@ interface OurExperts {
   location: "الرياض" | "جدة";
 }
 
-const OurExperts = () => {
+const OurExpertsComponent = () => {
 const [filter, setFilter] = useState<"الجميع" | "الرياض" | "جدة">("الجميع");
 
 // ✅ Read location from URL (like ?location=الرياض)
@@ -28,7 +25,7 @@ useEffect(() => {
   }
 }, [locationParam]);
 
-  const doctorsData: OurExperts[] = [
+  const doctorsData: Expert[] = [
     {
       id: 1,
       name: "الدكتور عبد العزيز  الشهراني",
@@ -146,7 +143,9 @@ useEffect(() => {
       : doctorsData.filter((doc) => doc.location === filter);
 
   return (
+  <Suspense fallback={<div>Loading...</div>}>
     <div dir="rtl" style={{ textAlign: "right", fontFamily: "Alexandria, sans-serif" }}>
+
       <div className="container ptb-140">
         <div className="section-title">
           <div className="row justify-content-center align-items-center g-4">
@@ -272,7 +271,8 @@ useEffect(() => {
         </div>
       </div>
     </div>
+    </Suspense>
   );
 };
 
-export default OurExperts;
+export default OurExpertsComponent;

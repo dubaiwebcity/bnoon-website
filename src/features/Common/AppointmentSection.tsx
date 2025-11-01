@@ -443,13 +443,15 @@ const [message, setMessage] = useState("");
   const isFieldInvalid = (field: string) =>
     submitted && !formData[field as keyof typeof formData];
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
   e.preventDefault();
   setSubmitted(true);
 
   // check empty fields
   const requiredFields = ["branch", "name", "mobile", "email"];
-const hasEmpty = requiredFields.some((field) => !formData[field]);
+const hasEmpty = requiredFields.some(
+  (field) => !formData[field as keyof typeof formData]
+);
 
   if (hasEmpty) {
     setMessage("❌ Please fill all required fields.");

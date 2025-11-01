@@ -57,7 +57,8 @@ const AppointmentSection = () => {
   };
 
   // ✅ Form Submit
-  const handleSubmit = async (e) => {
+const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+
   e.preventDefault();
   setSubmitted(true);
 
@@ -66,7 +67,9 @@ const AppointmentSection = () => {
     (key) => key !== "cityIfInSA" || formData.countryOfResidence === "Saudi Arabia"
   );
 
-  const hasEmpty = requiredFields.some((key) => !formData[key]);
+  const hasEmpty = requiredFields.some(
+  (key) => !(formData as Record<string, string>)[key]
+);
   if (hasEmpty) {
     setMessage("❌ Please fill all required fields.");
     return;

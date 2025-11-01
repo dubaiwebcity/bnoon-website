@@ -14,7 +14,8 @@ function Navbar() {
 
   useEffect(() => {
   if (typeof window !== "undefined") {
-    // @ts-ignore
+    // @ts-expect-error
+
     import("bootstrap/dist/js/bootstrap.bundle.min.js");
   }
 
