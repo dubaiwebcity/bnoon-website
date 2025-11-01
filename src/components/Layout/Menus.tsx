@@ -39,4 +39,9 @@ export const menus = [
     title: "Contact Us",
     href: "/en/contact-us",
   },
+    {
+    id: "arabic",
+    title: "العربية",
+    href: "#", // placeholder — we'll handle navigation dynamically
+  },
 ];

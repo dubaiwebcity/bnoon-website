@@ -48,7 +48,7 @@ const aboutData: AboutData = {
     {
       id: 4,
       icon: { src: "images/icons/icon-4.png", alt: "icon" },
-      title: "Special", // dummy title (rendering time par overwrite karenge)
+      title: "Special",
       description: "عدد المواقع",
     },
     {
@@ -77,9 +77,9 @@ function AboutUs() {
           </div>
 
           <div className="col-xl-12 col-md-12">
-            <div className="second-about-items d-flex flex-nowrap justify-content-center overflow-auto">
+            {/* 🔹 Removed flex-nowrap so we can control via CSS */}
+            <div className="second-about-items d-flex justify-content-center">
               {aboutData.items.map((item) => {
-                // 👇 item id ke hisaab se width set
                 let boxWidth = "220px";
                 if (item.id === 2 || item.id === 3) boxWidth = "150px";
                 if (item.id === 4) boxWidth = "350px";
@@ -105,15 +105,21 @@ function AboutUs() {
                         <>
                           <div className="d-flex justify-content-center align-items-center gap-2">
                             <h3>2</h3>
-                            <p className="mb-0 text-color">مركزان حالياً في الرياض وجدة</p>
+                            <p className="mb-0 text-color">
+                              مركزان حالياً في الرياض وجدة
+                            </p>
                           </div>
                           <div className="d-flex justify-content-center align-items-center gap-2">
                             <h3>1</h3>
-                            <p className="mb-0 text-color">واحد قيد التطوير في شمال الرياض</p>
+                            <p className="mb-0 text-color">
+                              واحد قيد التطوير في شمال الرياض
+                            </p>
                           </div>
                         </>
                       ) : (
-                        <h3 dangerouslySetInnerHTML={{ __html: item.title }} />
+                        <h3
+                          dangerouslySetInnerHTML={{ __html: item.title }}
+                        />
                       )}
 
                       <p>{item.description}</p>
@@ -126,6 +132,50 @@ function AboutUs() {
           </div>
         </div>
       </div>
+
+      {/* ✅ Scoped CSS */}
+      <style jsx>{`
+        /* Default: Desktop — keep items in a horizontal row */
+        .second-about-items {
+          display: flex;
+          flex-wrap: nowrap;
+          justify-content: center;
+          overflow-x: auto;
+        }
+
+        /* ✅ Mobile view (≤768px): stack vertically */
+        @media (max-width: 768px) {
+          .second-about-items {
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            justify-content: center !important;
+            overflow-x: visible !important;
+            flex-wrap: wrap !important;
+            gap: 20px;
+          }
+
+          .second-about-items .item-box {
+            width: 100% !important;
+            max-width: 320px;
+            margin: 10px auto !important;
+            min-width: unset !important;
+          }
+
+          .second-about-items .item img {
+            width: 80px !important;
+            height: auto !important;
+          }
+
+          .second-about-items h3 {
+            font-size: 1.4rem !important;
+          }
+
+          .second-about-items p {
+            font-size: 14px !important;
+          }
+        }
+      `}</style>
     </div>
   );
 }

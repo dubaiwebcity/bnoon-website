@@ -148,7 +148,7 @@ const footerData: FooterData = {
 function Footer() {
   return (
     <footer className="footer-area">
-      <div className="ptb-50">
+      <div className="mt-5 mb-lg-5 mb-0">
         <div className="container">
      <div className="row g-4">
  {/* Left column: Contact Us */}
@@ -192,20 +192,25 @@ function Footer() {
 </div>
 
   {/* Right columns: last two sections */}
-  <div className="col-lg-8 col-sm-12 d-flex justify-content-end">
-    {footerData.sections.slice(1).map((section, index) => (
-      <div className="single-footer-widget ms-4" style={{ minWidth: "150px" }} key={index}>
-        {section.title && <h3>{section.title}</h3>}
-        <ul className="links">
-          {section.links.map((link, linkIndex) => (
-            <li key={linkIndex}>
-              <Link href={link.url}>{link.text}</Link>
-            </li>
-          ))}
-        </ul>
-      </div>
-    ))}
-  </div>
+<div className="col-lg-8 col-sm-12 d-flex flex-lg-row flex-column justify-content-end align-items-start">
+  {footerData.sections.slice(1).map((section, index) => (
+    <div
+      className="single-footer-widget ms-lg-4 mb-3"
+      style={{ minWidth: "150px" }}
+      key={index}
+    >
+      {section.title && <h3>{section.title}</h3>}
+      <ul className="links">
+        {section.links.map((link, linkIndex) => (
+          <li key={linkIndex}>
+            <Link href={link.url}>{link.text}</Link>
+          </li>
+        ))}
+      </ul>
+    </div>
+  ))}
+</div>
+
 </div>
 
         </div>
@@ -213,7 +218,7 @@ function Footer() {
 
       <div className="container">
         <div className="copyright-area">
-          <div className="row justify-content-center align-items-center g-4">
+          <div className="row g-4">
             <div className="col-lg-6 col-md-12">
               <p className="footer-text">
                 © <span>{footerData.copyright.text}</span>2025 All Rights Reserved{" "}

@@ -48,7 +48,7 @@ const aboutData: AboutData = {
     {
       id: 4,
       icon: { src: "images/icons/icon-4.png", alt: "icon" },
-      title: "Special", // dummy title (rendering time par overwrite karenge)
+      title: "Special",
       description: "No. of Locations",
     },
     {
@@ -79,7 +79,7 @@ function AboutUs() {
           <div className="col-xl-12 col-md-12">
             <div className="second-about-items d-flex flex-nowrap justify-content-center overflow-auto">
               {aboutData.items.map((item) => {
-                // 👇 item id ke hisaab se width set
+                // ✅ Width logic must be here, before return
                 let boxWidth = "220px";
                 if (item.id === 2 || item.id === 3) boxWidth = "150px";
                 if (item.id === 4) boxWidth = "300px";
@@ -105,15 +105,21 @@ function AboutUs() {
                         <>
                           <div className="d-flex justify-content-center align-items-center gap-2">
                             <h3>2</h3>
-                            <p className="mb-0 text-color">Clinics in Riyadh and Jeddah</p>
+                            <p className="mb-0 text-color">
+                              Clinics in Riyadh and Jeddah
+                            </p>
                           </div>
                           <div className="d-flex justify-content-center align-items-center gap-2">
                             <h3>1</h3>
-                            <p className="mb-0 text-color">Opening Soon in North Riyadh</p>
+                            <p className="mb-0 text-color">
+                              Opening Soon in North Riyadh
+                            </p>
                           </div>
                         </>
                       ) : (
-                        <h3 dangerouslySetInnerHTML={{ __html: item.title }} />
+                        <h3
+                          dangerouslySetInnerHTML={{ __html: item.title }}
+                        />
                       )}
 
                       <p>{item.description}</p>

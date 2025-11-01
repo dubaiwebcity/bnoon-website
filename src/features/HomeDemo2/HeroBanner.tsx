@@ -177,6 +177,14 @@ function HeroBanner() {
           />
         </div>
       </div>
+<style jsx>{`
+  /* ✅ Mobile only: override the inline height */
+  @media (max-width: 768px) {
+    .second-banner-area {
+      height: 200px !important; /* 👈 removes the fixed height */
+    }
+  }
+`}</style>
 
       {/* 🔹 Slider Dots */}
       <div

@@ -309,12 +309,36 @@
     text-align: center;
   }
   .copyright-area .lists {
-    justify-content: center;
+   
   }
+  .footer-text {
+    color: #ffffff !important;
+    font-size: 12px !important;
+    text-align: left !important;
+}
   /* Home Two Responsive */
   .second-banner-area {
     padding-top: 50px;
   }
+  p.popup-text {
+    font-size: 12px !important;
+    color: #fff;
+    margin: 15px 0px 0px 0px;
+}
+  .navbar .navbar-brand {
+    padding-top: 0;
+    padding-bottom: 0;
+   padding-right: 20px; 
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+.btn-large {
+    padding: 10px 100px !important;
+    font-size: 18px;
+    border-radius: 10px;
+}
   .second-banner-area .container-fluid {
     padding-left: calc(var(--bs-gutter-x) * 0.5);
     padding-right: calc(var(--bs-gutter-x) * 0.5);
@@ -334,9 +358,24 @@
     margin-bottom: 7px;
   }
   .second-banner-content h1 {
-    font-size: 35px;
+    font-size: 15px;
     margin-bottom: 15px;
   }
+  .second-banner-content p {
+  font-size: 12px !important;
+  margin-bottom: 0;
+  color: #ffffff;
+}
+p.terms-text {
+    font-size: 12px !important;
+    font-style: italic;
+}
+.btn-banner {
+    background-color: #39bced !important;
+    border: none !important;
+    padding: 4px 20px !important;
+    font-size: 13px !important;
+}
   .second-banner-content .banner-btn {
     margin-top: 25px;
   }
@@ -401,7 +440,7 @@
     padding: 20px;
   }
   .how-it-work-card {
-    padding: 25px;
+    padding: px;
   }
   .how-it-work-card h3 {
     font-size: 20px;
@@ -1131,12 +1170,13 @@
     text-align: center;
   }
   .copyright-area .lists {
-    justify-content: center;
+   
   }
   /* Home Two Responsive */
   .second-banner-area {
-    padding-top: 100px;
-  }
+    padding-top: 50px;
+    height: 200px !important;
+
   .second-banner-area .container-fluid {
     padding-left: calc(var(--bs-gutter-x) * 0.5);
     padding-right: calc(var(--bs-gutter-x) * 0.5);
@@ -1950,4 +1990,17 @@
   .doctor-profile-area {
     margin: 0 120px;
   }
-}/*# sourceMappingURL=responsive.css.map */
+}/*# sourceMappingURL=responsive.css.map */  }
+ @media (max-width: 768px) {
+  .search-overview-content h2, .search-overview-content .h2 {
+  font-size: 25px;
+  margin-bottom: 17px;
+  color: #004E78;
+}
+p {
+    margin-bottom: 15px;
+    line-height: 1.7;
+    color: #404040;
+    font-size: 12px !important;
+}
+ }

@@ -58,40 +58,58 @@ function OurServices() {
               </div>
             </div>
 <div className="container-fluid px-0">
-  <div className="row justify-content-center g-4 ">
-    {servicesData.map((service, index) => (
-      <div 
-        key={index} 
-        className="col-md-6 mx-auto px-0" 
-        style={{ maxWidth: "600px" }}
-      >
-       <div className="service-card wrap2">
-  <div className="top">
-    {/* Row: Heading + Icon */}
-    <div className="d-flex align-items-center mb-2" style={{ justifyContent: "space-between", gap: "20px" }}>
-      <h3 className="mb-0">{service.title}</h3>
-      <div className="icon flex-shrink-0">
-        <img src={service.icon} alt="icon" width={70} height={70} />
-      </div>
-    </div>
-
-    {/* Description below the row */}
-    <p>{service.description}</p>
-  </div>
-</div>
-
-      </div>
-    ))}
-  </div>
-</div>
-
-
-
-
-
+              <div className="row justify-content-center g-4">
+                {servicesData.map((service, index) => (
+                  <div
+                    key={index}
+                    className="col-md-6 mx-auto px-0"
+                    style={{ maxWidth: "600px" }}
+                  >
+                    <div className="service-card wrap2">
+                      <div className="top">
+                        <div
+                          className="d-flex align-items-center mb-2"
+                          style={{
+                            justifyContent: "space-between",
+                            gap: "20px",
+                          }}
+                        >
+                          <h3 className="mb-0">{service.title}</h3>
+                          <div className="icon flex-shrink-0">
+                            <img
+                              src={service.icon}
+                              alt="icon"
+                              width={70}
+                              height={70}
+                            />
+                          </div>
+                        </div>
+                        <p>{service.description}</p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </div>
+
+      {/* ✅ Move your style block INSIDE the return */}
+      <style jsx>{`
+        /* 🔹 Only for mobile view (≤768px) */
+        @media (max-width: 768px) {
+          .services-area .container-fluid {
+            padding-left: 15px !important;
+            padding-right: 15px !important;
+          }
+
+          .services-area .service-card {
+            margin-left: 5px;
+            margin-right: 5px;
+          }
+        }
+      `}</style>
     </>
   );
 }

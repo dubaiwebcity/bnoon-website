@@ -2,34 +2,31 @@
 import React, { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 
-const Popup = () => {
+const PopupAr = () => {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [isOpen, setIsOpen] = useState(false);
 
-  const pathname = usePathname(); // ✅ current path
+  const pathname = usePathname();
 
   const handleContact = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("Submitted Email:", email);
-    setMessage("Thank you for subscribing!");
+    console.log("تم إدخال البريد الإلكتروني:", email);
+    setMessage("شكرًا لاشتراكك!");
     setEmail("");
   };
+
   useEffect(() => {
     if (typeof window !== "undefined") {
-      const popupShown = sessionStorage.getItem("popupShown");
-
-      if (!popupShown && pathname === "/en") {
+      const popupShown = sessionStorage.getItem("popupShownAr");
+      if (!popupShown && pathname === "/ar") {
         setTimeout(() => {
           setIsOpen(true);
-          sessionStorage.setItem("popupShown", "true"); // ✅ sirf ek session me ek dafa
+          sessionStorage.setItem("popupShownAr", "true");
         }, 500);
       }
     }
   }, [pathname]);
-
-
-
 
   return (
     <>
@@ -52,6 +49,7 @@ const Popup = () => {
         >
           <div
             className="popup-content"
+            dir="rtl"
             style={{
               backgroundImage: "url('/images/popup-image.avif')",
               borderRadius: "0%",
@@ -63,6 +61,8 @@ const Popup = () => {
               position: "relative",
               color: "#fff",
               overflow: "hidden",
+              textAlign: "right",
+              fontFamily: "Tajawal, sans-serif",
             }}
             onClick={(e) => e.stopPropagation()}
           >
@@ -84,7 +84,7 @@ const Popup = () => {
                 style={{
                   position: "absolute",
                   top: "-20px",
-                  right: "-20px",
+                  left: "-20px", // flipped for RTL
                   border: "none",
                   background: "transparent",
                   color: "#fff",
@@ -98,15 +98,18 @@ const Popup = () => {
               >
                 ✖
               </button>
+
               <h2 className="popup-heading">
-                Just Launched: Bnoon’s New Identity & Website for Next-Gen Fertility Care
+               انطلاقة متجددة لبنون: هوية جديدة وموقع إلكتروني
+يواكب الجيل الجديد من علاجات الإخصاب وصحة المرأة
               </h2>
               <p className="popup-text">
-                We’ve just launched our new identity and upgraded our site to bring you a
-                better, faster, and more user-friendly experience.
+               أطلقنــــا هويتنا الجــــديدة وطــــوّرنا موقعنا الإلــــكتروني
+
+لـــــنـــمنحــــكم تجـــــربـــــة أسرع وأســـــهــــل۔
               </p>
-              <p className="popup-text">
-                <strong>Want to receive updates from us?</strong>
+              <p className="popup-text mb-2">
+                <strong>هل ترغبون في معرفة كل جديد لدينا؟</strong>
               </p>
 
               <form onSubmit={handleContact} className="w-full">
@@ -117,29 +120,67 @@ const Popup = () => {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
-                    placeholder="Enter your email"
+                    placeholder="أدخل بريدك الإلكتروني"
                     className="form-input flex-grow border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    dir="rtl"
                   />
                   <button
                     type="submit"
                     className="btn btn-primary px-5 py-2 rounded-lg submit-btn"
                   >
-                    Submit
+                    إرسال
                   </button>
                 </div>
                 {message && <p className="text-success mt-2">{message}</p>}
               </form>
 
               <p className="popup-text">
-                By submitting your email, you agree to our Privacy Policy. You can
-                unsubscribe anytime.
+               من خلال إدخال بريدكم الإلكتروني، فإنكم توافقون على
+
+سياسة الخصوصية الخاصة بنا. يمكنكم إلغاء الاشتراك في أي وقت۔
               </p>
             </div>
           </div>
+
+          {/* ✅ Mobile responsive styles */}
+          <style jsx>{`
+            @media (max-width: 768px) {
+              .popup-content {
+                max-width: 90% !important;
+                padding: 15px !important;
+                border-radius: 8px;
+                background-position: center;
+              }
+              .popup-heading {
+                font-size: 14px !important;
+              }
+              .popup-text {
+                font-size: 10px !important;
+              }
+              form {
+                display: flex;
+                flex-direction: column;
+              }
+              form input {
+                width: 100% !important;
+                margin-bottom: 10px;
+              }
+              .submit-btn {
+                width: 100% !important;
+              }
+              button[style] {
+                top: 5px !important;
+                left: 5px !important;
+                font-size: 16px !important;
+                background: rgba(0, 0, 0, 0.3);
+                border-radius: 50%;
+              }
+            }
+          `}</style>
         </div>
       )}
     </>
   );
 };
 
-export default Popup;
+export default PopupAr;

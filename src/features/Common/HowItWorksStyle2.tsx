@@ -44,7 +44,7 @@ const HowItWorksSlider = () => {
                   <img
                     src={step.imageSrc}
                     alt={step.title}
-                    width={320}
+                    width={350}
                     height={300}
                    
                   />

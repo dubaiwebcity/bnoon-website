@@ -14717,7 +14717,7 @@ ul.values-list.mt-3 {
     padding: 0px;
 }
 .submit-btn{
-    background-color: #004e78 !important;
+    background-color: #39bced !important;
     border: none !important;
     --bs-border-radius: none;
 }
@@ -15543,7 +15543,7 @@ Second Banner Area CSS
 }
 
 .second-banner-content {
-  max-width: 60%;
+  max-width: 66%;
 }
 .second-banner-content .trust-info {
   display: inline-flex;
@@ -16326,7 +16326,7 @@ Page Banner Area CSS
 =================================================*/
 .page-banner-area {
   background-color: #F5F5F5;
-  margin: 0 20px;
+  margin: 0 0px !important;
   overflow: hidden;
   padding-top: 180px;
   padding-bottom: 180px;

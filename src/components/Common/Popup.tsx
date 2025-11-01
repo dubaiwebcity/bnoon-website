@@ -7,7 +7,7 @@ const Popup = () => {
   const [message, setMessage] = useState("");
   const [isOpen, setIsOpen] = useState(false);
 
-  const pathname = usePathname(); // ✅ current path
+  const pathname = usePathname();
 
   const handleContact = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -15,21 +15,18 @@ const Popup = () => {
     setMessage("Thank you for subscribing!");
     setEmail("");
   };
+
   useEffect(() => {
     if (typeof window !== "undefined") {
       const popupShown = sessionStorage.getItem("popupShown");
-
       if (!popupShown && pathname === "/en") {
         setTimeout(() => {
           setIsOpen(true);
-          sessionStorage.setItem("popupShown", "true"); // ✅ sirf ek session me ek dafa
+          sessionStorage.setItem("popupShown", "true");
         }, 500);
       }
     }
   }, [pathname]);
-
-
-
 
   return (
     <>
@@ -136,6 +133,42 @@ const Popup = () => {
               </p>
             </div>
           </div>
+
+          {/* ✅ Mobile responsive styles only */}
+          <style jsx>{`
+            @media (max-width: 768px) {
+              .popup-content {
+                max-width: 90% !important;
+                padding: 15px !important;
+                border-radius: 8px;
+                background-position: center;
+              }
+              .popup-heading {
+                font-size: 14px !important;
+              }
+              .popup-text {
+                font-size: 0.9rem !important;
+              }
+              form {
+                display: flex;
+                flex-direction: column;
+              }
+              form input {
+                width: 100% !important;
+                margin-bottom: 10px;
+              }
+              .submit-btn {
+                width: 100% !important;
+              }
+              button[style] {
+                top: 5px !important;
+                right: 5px !important;
+                font-size: 16px !important;
+                background: rgba(0, 0, 0, 0.3);
+                border-radius: 50%;
+              }
+            }
+          `}</style>
         </div>
       )}
     </>

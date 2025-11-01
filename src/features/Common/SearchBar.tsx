@@ -158,6 +158,20 @@ const SearchBar = () => {
           opacity: 1;
           transform: translateX(0);
         }
+           /* ✅ Mobile Responsive - column layout */
+  @media (max-width: 768px) {
+    .search-bar {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 10px;
+    }
+
+    .doctor-select,
+    .location-select,
+    .search-button {
+      width: 100%;
+    }
+  }
       `}</style>
     </div>
   );

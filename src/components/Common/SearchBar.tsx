@@ -146,17 +146,33 @@ const SearchBar = () => {
       </div>
 
       {/* CSS for animation */}
-      <style jsx>{`
-        .animate-left {
-          opacity: 0;
-          transform: translateX(-50px);
-          transition: all 0.5s ease-in-out;
-        }
-        .animate-left.show {
-          opacity: 1;
-          transform: translateX(0);
-        }
-      `}</style>
+     <style jsx>{`
+  .animate-left {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: all 0.5s ease-in-out;
+  }
+  .animate-left.show {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  /* ✅ Add this only */
+  @media (max-width: 767px) {
+    .search-bar {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 10px;
+    }
+
+    .search-bar select,
+    .search-bar button {
+      width: 100%;
+    }
+  }
+`}</style>
+
     </div>
   );
 };

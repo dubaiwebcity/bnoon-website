@@ -1,5 +1,5 @@
 "use client";
-import Popup from "@/components/Common/Popup";
+import Popup from "@/features/Common/Popup";
 export default function Page() {
   return (
     <>

@@ -71,7 +71,7 @@ const Benefits = () => {
   }, []);
 
   return (
-    <div className="service-overview-area ptb-140">
+    <div className="service-overview-area">
       <div className="container">
         <div className="row justify-content-center align-items-center g-4">
           <div
@@ -121,22 +121,39 @@ const Benefits = () => {
               transition: "all 0.5s ease-out",
             }}
           >
-            <div
-              className="service-overview-image"
-              style={{
-                boxShadow: "50px 50px 0px #d7f2fb",
-                overflow: "hidden",
-                display: "inline-block",
-              }}
-            >
-              <img
-                src={images[currentIndex]}
-                alt="Service overview"
-                width={580}
-                height={450}
-                style={{ transition: "opacity 0.5s ease-in-out" }}
-              />
-            </div>
+        <div
+  className="service-overview-image"
+  style={{
+    boxShadow: "50px 50px 0px #d7f2fb",
+    overflow: "hidden",
+    display: "inline-block",
+  }}
+>
+  <img
+    src={images[currentIndex]}
+    alt="Service overview"
+    className="responsive-image"
+    width={580}
+    height={450}
+    style={{ transition: "opacity 0.5s ease-in-out" }}
+  />
+
+  {/* ✅ Responsive style only for mobile */}
+  <style jsx>{`
+    @media (max-width: 768px) {
+      .service-overview-image {
+        box-shadow: 20px 20px 0px #d7f2fb; /* smaller shadow for mobile */
+        width: 85% !important;
+      }
+
+      .responsive-image {
+        width: 100% !important;
+        height: auto !important;
+      }
+    }
+  `}</style>
+</div>
+
           </div>
         </div>
       </div>
