@@ -31,18 +31,12 @@ jobs:
       - name: Prepare release folder
         run: |
           mkdir -p release
-          # Copy all project files except unnecessary stuff
-          rsync -av \
-            --exclude=node_modules \
-            --exclude=.git \
-            --exclude=.github \
-            ./ ./release/
-
+          # Copy required build files only (no recursion issues)
+          cp -r .next package.json next.config.js public release/
+          # Install only production dependencies in release folder
           cd release
-          # Remove postinstall to avoid double builds
           npm pkg delete scripts.postinstall || true
-          # Install only production deps
-          npm ci --omit=dev
+          npm install --omit=dev
         shell: bash
 
       - name: Deploy to Azure Web App
