@@ -25,12 +25,11 @@ jobs:
       - name: Build Next.js app
         run: npm run build
 
-      - name: Upload production artifacts
+      - name: Prepare release folder
         run: |
           mkdir -p release
           cp -r .next package.json next.config.js public release/
-          cd release
-          npm install --production
+          npm install --production --prefix release
         shell: bash
 
       - name: Deploy to Azure Web App
