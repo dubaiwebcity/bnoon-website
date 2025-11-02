@@ -12,8 +12,10 @@ env:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -29,8 +31,18 @@ jobs:
       - name: Prepare release folder
         run: |
           mkdir -p release
-          cp -r .next public package.json next.config.js release/
-          npm install --production --prefix release
+          # Copy all project files except unnecessary stuff
+          rsync -av \
+            --exclude=node_modules \
+            --exclude=.git \
+            --exclude=.github \
+            ./ ./release/
+
+          cd release
+          # Remove postinstall to avoid double builds
+          npm pkg delete scripts.postinstall || true
+          # Install only production deps
+          npm ci --omit=dev
         shell: bash
 
       - name: Deploy to Azure Web App
