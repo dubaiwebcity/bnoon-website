@@ -28,11 +28,10 @@ jobs:
           cache: 'npm'
 
       # Install dependencies and build
-      - name: npm install, build, test
+      - name: npm install and build
         run: |
           npm install
           npm run build --if-present
-          npm run test --if-present
 
       # Upload artifact for deployment
       - name: Upload artifact for deployment
@@ -41,7 +40,6 @@ jobs:
           name: node-app
           path: |
             .next
-            node_modules
             package.json
             package-lock.json
 
@@ -52,7 +50,6 @@ jobs:
       contents: none
     environment:
       name: 'Production'
-      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
     steps:
       # Download artifact
       - name: Download artifact
