@@ -39,6 +39,9 @@ jobs:
           npm install --omit=dev
         shell: bash
 
+      - name: Ensure Next.js runtime is available
+        run: cd release && npm install next
+
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v2
         with:
