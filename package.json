@@ -4,8 +4,8 @@
   "private": true,
 "scripts": {
   "build": "next build",
-  "start": "next start -p $PORT",
-  "postinstall": "next build"
+  "start": "next start -p 8080",
+  "postinstall": "npm install --force"
 },
   "dependencies": {
     "@fontsource/alexandria": "^5.2.8",
