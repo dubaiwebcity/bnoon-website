@@ -21,7 +21,9 @@ jobs:
           node-version: ${{ env.NODE_VERSION }}
 
       - name: Install dependencies
-        run: npm ci
+        run: |
+          npm pkg delete scripts.postinstall
+          npm ci
 
       - name: Build Next.js app
         run: npm run build
@@ -30,8 +32,7 @@ jobs:
         run: |
           mkdir -p release
           cp -r .next package.json next.config.js public release/
-          npm pkg delete scripts.postinstall
-          npm install --production --prefix release
+          npm install --omit=dev --prefix release
         shell: bash
 
       - name: Deploy to Azure Web App
