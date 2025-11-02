@@ -3,10 +3,11 @@ name: Build and Deploy Node.js App to Azure
 on:
   push:
     branches: ["main"]
+  workflow_dispatch:
 
 env:
   AZURE_WEBAPP_NAME: bnoonwebsite
-  NODE_VERSION: '20.x'
+  NODE_VERSION: "20.x"
 
 jobs:
   build-and-deploy:
@@ -29,6 +30,7 @@ jobs:
         run: |
           mkdir -p release
           cp -r .next package.json next.config.js public release/
+          npm pkg delete scripts.postinstall
           npm install --production --prefix release
         shell: bash
 
