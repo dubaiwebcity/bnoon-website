@@ -31,20 +31,22 @@ jobs:
       - name: Prepare release folder
         run: |
           mkdir -p release
-          # Copy required build files only (no recursion issues)
           cp -r .next package.json next.config.js public release/
-          # Install only production dependencies in release folder
           cd release
           npm pkg delete scripts.postinstall || true
           npm install --omit=dev
+          npm install next
         shell: bash
 
-      - name: Ensure Next.js runtime is available
-        run: cd release && npm install next
+      - name: Compress release folder (ZIP)
+        run: |
+          cd release
+          zip -r ../release.zip . -x "*.git*" "*.next/cache*" "node_modules/.cache/*"
+        shell: bash
 
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v2
         with:
           app-name: ${{ env.AZURE_WEBAPP_NAME }}
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
-          package: ./release
+          package: ./release.zip
